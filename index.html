@@ -46,7 +46,7 @@
             #footer{height:30px; border-top: 1px solid #fff; z-index: 150; position: absolute; top:0; left:0; font-size: 9px; padding-left:60px; background-color: #000}
             #love{position: absolute; top:50px; left:700px; width:128px; height:128px; z-index:64999; display: none;}
             #bomb{position: absolute; top:50px; left:828px; width:128px; height:128px; z-index:64999; display: none;}
-            #tweet{position: absolute; top:30px; left:800px; width:128px; height:128px; z-index:1; display: block;}
+            #tweet{position: absolute; top:10px; left:730px; width:128px; height:128px; z-index:1; display: block;}
             
             #intro{position: absolute; top:200px; left:60px; width:1024px; height:380px; background:url('images/intro.png') no-repeat; z-index:65000; margin-left: 0;
                 margin-top: 0; cursor: pointer;}
@@ -129,10 +129,10 @@
                 top:0px;
                 left:0px;
                 height: 200px;
-                width: 800px;;
+                width: 1000px;
                 display: block;
                 vertical-align:top;
-                margin-left: -20px;
+                margin-left: -120px;
                 margin-top: -20px;
                 border:0px solid #FFF;
                 display:block; 
@@ -453,8 +453,9 @@
                 $('#love').animate({'left':'520', 'top':'10'},1000).show();
                 $('#bomb').animate({'left':'620', 'top':'10'},1000).show(); 
                 $('#love input').animate({'opacity':'0.5','width':'64', 'height':'64','marginTop':'32','marginLeft':'32'},1000).show();
+                $('#bomb input').animate({'opacity':'0.5','width':'64', 'height':'64','marginTop':'32','marginLeft':'32'},1000).show();
                 $('#bomb input').animate({'opacity':'0.5','width':'64', 'height':'64','marginTop':'32','marginLeft':'32'},1000).show();                                                                       
-                setTimeout("$('#play').click();",1000);
+                setTimeout("$('#play').click();",1000);                
             }
 
             //function to get random number from 1 to n
@@ -798,12 +799,24 @@
                 $('#scorebox').show().animate({'left':'410'},600);
                 $('#score').show().animate({'left':'17'},600);                                 
                 bindOptionEffects(); 
-                $("#tweet").tweetIt({
-					animate: "slide",
-					header: "Tweet your ELECTROGEEK score!",	
-					intro: "We encourage you to post your score in your Twitter feed so that all your friends can have a try as well!",
-					popup: false
-				});                 
+				$('#tweet input').animate({'width':'64', 'height':'64','marginTop':'32','marginLeft':'32'},1000).show();
+                $('#tweet').hover(function(){
+                    $('#tweet input').animate({'opacity':'1.0','width':'128', 'height':'128','marginTop':'0','marginLeft':'0'},1000).show();
+                },function(){
+                    $('#tweet input').animate({'width':'64', 'height':'64','marginTop':'32','marginLeft':'32'},1000).show(); 
+                });	
+                $("#tweet").click(function(){
+	                $("#tweet").tweetIt({
+						animate: "slide",
+						header: "Tweet your ELECTROGEEK score!",	
+						intro: "We encourage you to post your score in your Twitter feed so that all your friends can have a try as well!",
+						popup: false
+					});                  
+                })
+               			
+	                
+	                				
+				                
             }
 
             function endScreen(){
