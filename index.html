@@ -823,12 +823,14 @@
                 $('#audioFilePlayer').html('');
                 $('#toolbar').hide();
                 $('#traxInfo').remove();
-                $("#gameover").tweetIt({
-					animate: "slide",
-					header: "Tweet your ELECTROGEEK score!",	
-					intro: "We encourage you to post your score in your Twitter feed so that all your friends can have a try as well!",
-					popup: false
-				});   
+                $("#gameover").click(function(){
+	                $("#gameover").tweetIt({
+						animate: "slide",
+						header: "Tweet your ELECTROGEEK score!",	
+						intro: "We encourage you to post your score in your Twitter feed so that all your friends can have a try as well!",
+						popup: false
+					});                  
+                })                  
 				$('#logo').show().animate({'marginLeft':'-40', 'marginTop':'0'},600);              
                 $('#gameover').show().animate({'marginLeft':'-50', 'marginTop':'300'},600);
                 $('#scorebox').stop().show().animate({'marginLeft':'0', 'marginTop':'150'},600);
@@ -836,7 +838,8 @@
                 $('#interfacebg').show().animate({'marginTop':'-450'},600);
                 $('#gameover').show().animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200);
                 $('#love').stop().animate({'opacity':'0.0'},1000).hide();
-                $('#bomb').stop().animate({'opacity':'0.0'},1000).hide();  
+                $('#bomb').stop().animate({'opacity':'0.0'},1000).hide();
+                $('#tweet').stop().animate({'opacity':'0.0'},1000).hide();  
                
             }
 
@@ -931,6 +934,126 @@
 			  <img src="covers/28.jpg" width="200" height="200" alt="28" class="option"/>
 			  <img src="covers/29.jpg" width="200" height="200" alt="29" class="option"/>
 			  <img src="covers/30.jpg" width="200" height="200" alt="30" class="option"/>
+			  <img src="covers/1.jpg" width="200" height="200" alt="1" class="option"/>
+			  <img src="covers/2.jpg" width="200" height="200" alt="2" class="option"/>
+			  <img src="covers/3.jpg" width="200" height="200" alt="3" class="option"/>
+			  <img src="covers/4.jpg" width="200" height="200" alt="4" class="option"/>
+			  <img src="covers/5.jpg" width="200" height="200" alt="5" class="option"/>
+			  <img src="covers/6.jpg" width="200" height="200" alt="6" class="option"/>
+			  <img src="covers/7.jpg" width="200" height="200" alt="7" class="option"/>
+			  <img src="covers/8.jpg" width="200" height="200" alt="8" class="option"/>
+			  <img src="covers/9.jpg" width="200" height="200" alt="9" class="option"/>
+			  <img src="covers/10.jpg" width="200" height="200" alt="10" class="option"/>
+			  <img src="covers/11.jpg" width="200" height="200" alt="11" class="option"/>
+			  <img src="covers/12.jpg" width="200" height="200" alt="12" class="option"/>
+			  <img src="covers/13.jpg" width="200" height="200" alt="13" class="option"/>
+			  <img src="covers/14.jpg" width="200" height="200" alt="14" class="option"/>
+			  <img src="covers/15.jpg" width="200" height="200" alt="15" class="option"/>
+			  <img src="covers/16.jpg" width="200" height="200" alt="16" class="option"/>
+			  <img src="covers/17.jpg" width="200" height="200" alt="17" class="option"/>
+			  <img src="covers/18.jpg" width="200" height="200" alt="18" class="option"/>
+			  <img src="covers/19.jpg" width="200" height="200" alt="19" class="option"/>
+			  <img src="covers/20.jpg" width="200" height="200" alt="20" class="option"/>
+			  <img src="covers/21.jpg" width="200" height="200" alt="21" class="option"/>
+			  <img src="covers/22.jpg" width="200" height="200" alt="22" class="option"/>
+			  <img src="covers/23.jpg" width="200" height="200" alt="23" class="option"/>
+			  <img src="covers/24.jpg" width="200" height="200" alt="24" class="option"/>
+			  <img src="covers/25.jpg" width="200" height="200" alt="25" class="option"/>
+			  <img src="covers/26.jpg" width="200" height="200" alt="26" class="option"/>
+			  <img src="covers/27.jpg" width="200" height="200" alt="27" class="option"/>
+			  <img src="covers/28.jpg" width="200" height="200" alt="28" class="option"/>
+			  <img src="covers/29.jpg" width="200" height="200" alt="29" class="option"/>
+			  <img src="covers/30.jpg" width="200" height="200" alt="30" class="option"/>	
+			  <img src="covers/1.jpg" width="200" height="200" alt="1" class="option"/>
+			  <img src="covers/2.jpg" width="200" height="200" alt="2" class="option"/>
+			  <img src="covers/3.jpg" width="200" height="200" alt="3" class="option"/>
+			  <img src="covers/4.jpg" width="200" height="200" alt="4" class="option"/>
+			  <img src="covers/5.jpg" width="200" height="200" alt="5" class="option"/>
+			  <img src="covers/6.jpg" width="200" height="200" alt="6" class="option"/>
+			  <img src="covers/7.jpg" width="200" height="200" alt="7" class="option"/>
+			  <img src="covers/8.jpg" width="200" height="200" alt="8" class="option"/>
+			  <img src="covers/9.jpg" width="200" height="200" alt="9" class="option"/>
+			  <img src="covers/10.jpg" width="200" height="200" alt="10" class="option"/>
+			  <img src="covers/11.jpg" width="200" height="200" alt="11" class="option"/>
+			  <img src="covers/12.jpg" width="200" height="200" alt="12" class="option"/>
+			  <img src="covers/13.jpg" width="200" height="200" alt="13" class="option"/>
+			  <img src="covers/14.jpg" width="200" height="200" alt="14" class="option"/>
+			  <img src="covers/15.jpg" width="200" height="200" alt="15" class="option"/>
+			  <img src="covers/16.jpg" width="200" height="200" alt="16" class="option"/>
+			  <img src="covers/17.jpg" width="200" height="200" alt="17" class="option"/>
+			  <img src="covers/18.jpg" width="200" height="200" alt="18" class="option"/>
+			  <img src="covers/19.jpg" width="200" height="200" alt="19" class="option"/>
+			  <img src="covers/20.jpg" width="200" height="200" alt="20" class="option"/>
+			  <img src="covers/21.jpg" width="200" height="200" alt="21" class="option"/>
+			  <img src="covers/22.jpg" width="200" height="200" alt="22" class="option"/>
+			  <img src="covers/23.jpg" width="200" height="200" alt="23" class="option"/>
+			  <img src="covers/24.jpg" width="200" height="200" alt="24" class="option"/>
+			  <img src="covers/25.jpg" width="200" height="200" alt="25" class="option"/>
+			  <img src="covers/26.jpg" width="200" height="200" alt="26" class="option"/>
+			  <img src="covers/27.jpg" width="200" height="200" alt="27" class="option"/>
+			  <img src="covers/28.jpg" width="200" height="200" alt="28" class="option"/>
+			  <img src="covers/29.jpg" width="200" height="200" alt="29" class="option"/>
+			  <img src="covers/30.jpg" width="200" height="200" alt="30" class="option"/>	
+			  <img src="covers/1.jpg" width="200" height="200" alt="1" class="option"/>
+			  <img src="covers/2.jpg" width="200" height="200" alt="2" class="option"/>
+			  <img src="covers/3.jpg" width="200" height="200" alt="3" class="option"/>
+			  <img src="covers/4.jpg" width="200" height="200" alt="4" class="option"/>
+			  <img src="covers/5.jpg" width="200" height="200" alt="5" class="option"/>
+			  <img src="covers/6.jpg" width="200" height="200" alt="6" class="option"/>
+			  <img src="covers/7.jpg" width="200" height="200" alt="7" class="option"/>
+			  <img src="covers/8.jpg" width="200" height="200" alt="8" class="option"/>
+			  <img src="covers/9.jpg" width="200" height="200" alt="9" class="option"/>
+			  <img src="covers/10.jpg" width="200" height="200" alt="10" class="option"/>
+			  <img src="covers/11.jpg" width="200" height="200" alt="11" class="option"/>
+			  <img src="covers/12.jpg" width="200" height="200" alt="12" class="option"/>
+			  <img src="covers/13.jpg" width="200" height="200" alt="13" class="option"/>
+			  <img src="covers/14.jpg" width="200" height="200" alt="14" class="option"/>
+			  <img src="covers/15.jpg" width="200" height="200" alt="15" class="option"/>
+			  <img src="covers/16.jpg" width="200" height="200" alt="16" class="option"/>
+			  <img src="covers/17.jpg" width="200" height="200" alt="17" class="option"/>
+			  <img src="covers/18.jpg" width="200" height="200" alt="18" class="option"/>
+			  <img src="covers/19.jpg" width="200" height="200" alt="19" class="option"/>
+			  <img src="covers/20.jpg" width="200" height="200" alt="20" class="option"/>
+			  <img src="covers/21.jpg" width="200" height="200" alt="21" class="option"/>
+			  <img src="covers/22.jpg" width="200" height="200" alt="22" class="option"/>
+			  <img src="covers/23.jpg" width="200" height="200" alt="23" class="option"/>
+			  <img src="covers/24.jpg" width="200" height="200" alt="24" class="option"/>
+			  <img src="covers/25.jpg" width="200" height="200" alt="25" class="option"/>
+			  <img src="covers/26.jpg" width="200" height="200" alt="26" class="option"/>
+			  <img src="covers/27.jpg" width="200" height="200" alt="27" class="option"/>
+			  <img src="covers/28.jpg" width="200" height="200" alt="28" class="option"/>
+			  <img src="covers/29.jpg" width="200" height="200" alt="29" class="option"/>
+			  <img src="covers/30.jpg" width="200" height="200" alt="30" class="option"/>	
+			  <img src="covers/1.jpg" width="200" height="200" alt="1" class="option"/>
+			  <img src="covers/2.jpg" width="200" height="200" alt="2" class="option"/>
+			  <img src="covers/3.jpg" width="200" height="200" alt="3" class="option"/>
+			  <img src="covers/4.jpg" width="200" height="200" alt="4" class="option"/>
+			  <img src="covers/5.jpg" width="200" height="200" alt="5" class="option"/>
+			  <img src="covers/6.jpg" width="200" height="200" alt="6" class="option"/>
+			  <img src="covers/7.jpg" width="200" height="200" alt="7" class="option"/>
+			  <img src="covers/8.jpg" width="200" height="200" alt="8" class="option"/>
+			  <img src="covers/9.jpg" width="200" height="200" alt="9" class="option"/>
+			  <img src="covers/10.jpg" width="200" height="200" alt="10" class="option"/>
+			  <img src="covers/11.jpg" width="200" height="200" alt="11" class="option"/>
+			  <img src="covers/12.jpg" width="200" height="200" alt="12" class="option"/>
+			  <img src="covers/13.jpg" width="200" height="200" alt="13" class="option"/>
+			  <img src="covers/14.jpg" width="200" height="200" alt="14" class="option"/>
+			  <img src="covers/15.jpg" width="200" height="200" alt="15" class="option"/>
+			  <img src="covers/16.jpg" width="200" height="200" alt="16" class="option"/>
+			  <img src="covers/17.jpg" width="200" height="200" alt="17" class="option"/>
+			  <img src="covers/18.jpg" width="200" height="200" alt="18" class="option"/>
+			  <img src="covers/19.jpg" width="200" height="200" alt="19" class="option"/>
+			  <img src="covers/20.jpg" width="200" height="200" alt="20" class="option"/>
+			  <img src="covers/21.jpg" width="200" height="200" alt="21" class="option"/>
+			  <img src="covers/22.jpg" width="200" height="200" alt="22" class="option"/>
+			  <img src="covers/23.jpg" width="200" height="200" alt="23" class="option"/>
+			  <img src="covers/24.jpg" width="200" height="200" alt="24" class="option"/>
+			  <img src="covers/25.jpg" width="200" height="200" alt="25" class="option"/>
+			  <img src="covers/26.jpg" width="200" height="200" alt="26" class="option"/>
+			  <img src="covers/27.jpg" width="200" height="200" alt="27" class="option"/>
+			  <img src="covers/28.jpg" width="200" height="200" alt="28" class="option"/>
+			  <img src="covers/29.jpg" width="200" height="200" alt="29" class="option"/>
+			  <img src="covers/30.jpg" width="200" height="200" alt="30" class="option"/>	
 			  <img src="covers/1.jpg" width="200" height="200" alt="1" class="option"/>
 			  <img src="covers/2.jpg" width="200" height="200" alt="2" class="option"/>
 			  <img src="covers/3.jpg" width="200" height="200" alt="3" class="option"/>
