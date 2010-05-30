@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset=utf-8 />
+        <meta name="viewport" content="width=620" />
+        <meta name="description" content="ELECTROGEEK. HTML5" />
+        <meta name="keywords" content="ELECTROGEEK, HTML5, electronic, electro, stereo" />
+        <title>ELECTROGEEK</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="author" content="Pieter Hartzenberg"/>
+        <meta name="robots" content="index, follow"/>
+        <script type="text/javascript" src="script/jquery.min.js"></script>
+        <script src="script/jquery.form.js" type="text/javascript"></script>
+        <script type="text/javascript" src="http://tweet-it.s3.amazonaws.com/tweet-it.js"></script>
+        <script type="text/javascript" src="script/processing.js"></script>
+        <script type="text/javascript" src="script/jquery.masonry.min.js"></script>
+        
+        
+        <script src="script/h5utils.js"></script>
+        <style type="text/css" media="screen, projection">
+            *{padding:0; margin:0}
+            html, body {margin:0; padding:0; border:0; height:100%; overflow: hidden;}
+            h2 {font:12px/22px helvetica, Georgia, sans-serif; color:#FFF}
+            h3 {font:14px/28px helvetica, Georgia, sans-serif; color:#FFF}
+            h4 {font:24px/24px helvetica, Georgia, sans-serif; color:#FFF; font-weight: bold; cursor: pointer; text-transform: uppercase;}
+            h5 {font:30px/30px helvetica, Georgia, sans-serif; color:#FFF; font-weight: bold; cursor: pointer; text-transform: uppercase;}
+            .h3{font:14px/28px helvetica, Georgia, sans-serif; color:#FFF;}
+            body {font-family: helvetica, Georgia, sans-serif; font-size: 12px; width:100%; color:#FFF;font:12px/18px helvetica, Georgia,sans-serif;   background:url('images/pinstripe.gif'); }
+            p{color:#FFF;}
+            a {text-decoration: underline; cursor:pointer;}
+            a img {border: none; cursor:pointer;}
+            a:link, a:visited {color: #FFFFFF;border-bottom: 0px solid #9A8E51; cursor:pointer;}
+            html body a:hover {color: #FFFFFF; border-bottom: 0px solid #555; cursor:pointer;}
+            a.menuItem{font:30px/30px helvetica, Georgia, sans-serif; color:#FFF; font-weight: bold; cursor: pointer; text-decoration: none; margin-bottom: 20px;}
+            #logo{position: absolute; top:50px; left:60px; width:600px; height:128px; background:url('images/logo.png') no-repeat; z-index:65000;}
+            #gameover{position: absolute; top:40px; left:88px; width:1050px; height:128px; background:url('images/gameover.png') no-repeat; z-index:65000; display: none; cursor:pointer;}
+            #score{position: absolute; top:50px; left:700px; width:300px; height:100px; background:url('images/score.png') no-repeat; z-index:10; margin-left: 0;
+                margin-top: 0;}
+            #stageCurtain{position:absolute; top:0px; left:0px; display:block;   z-index:100; overflow: hidden; width: 10000px; height: 2000px;}
+            #stageCurtain_Left{position:absolute; top:0px; left:0px; display:block; z-index:120; background:url('images/pinstripe.gif'); margin-left: 0px;}
+            #stageCurtain_Right{position:absolute; top:0px; left:0px; display:block; z-index:120; background:url('images/pinstripe.gif'); margin-left: 0px;}
+            #stageContent{position:absolute; top:0px; left:458px; width:300px; padding-left:120px; padding-top: 220px; padding-right:500px; display:none; background:url('images/wall/bg.png');
+                background-color: transparent; border-left:0px solid #FFF; z-index:50}
+
+            .slide-out-div {position: absolute; top:0px; left:0px; padding-left: 100px; padding-right: 20px; width: 300px; border-right: 0px solid #fff; display: block; z-index: 100; }
+            #footer{height:30px; border-top: 1px solid #fff; z-index: 150; position: absolute; top:0; left:0; font-size: 9px; padding-left:60px; background-color: #000}
+            #love{position: absolute; top:50px; left:700px; width:128px; height:128px; z-index:64999; display: none;}
+            #bomb{position: absolute; top:50px; left:828px; width:128px; height:128px; z-index:64999; display: none;}
+            #intro{position: absolute; top:200px; left:60px; width:1024px; height:380px; background:url('images/intro.png') no-repeat; z-index:65000; margin-left: 0;
+                margin-top: 0; cursor: pointer;}
+            .parallax-viewport {
+                position: relative;     /* relative, absolute, fixed */
+                overflow: hidden;
+            }
+            .parallax-layer {
+                position: absolute;
+            }
+
+            #port {
+
+                margin: 0px;
+                overflow: hidden;
+                position: relative;
+                width: 60em; height: 300px;
+            }
+            #wrapper{                
+            	margin: 0px;
+                overflow: hidden;
+                position: relative;
+                width: 3000px; height: 3000px;  
+                z-index: 0;
+            }
+
+            #port2 {
+
+                margin: 0px;
+                overflow: hidden;
+                position: relative;
+                width: 60em; height: 300px;
+            }
+
+            #toolbar{
+                position: absolute;
+                top:180px;
+                left:100px;
+                height: 53px;
+                width: 158px;
+                display: block;
+                vertical-align:top;
+                z-index: 10;
+            }
+            #audioControl{
+                height: 128px;
+                width: 128px;
+                display: block;
+                background: url('images/toolbar/Play.png');
+            }
+            #scorebox{
+                position: absolute;
+                top:90px;
+                left:320px;
+                height: 53px;
+                width: 128px;
+                display: block;
+                vertical-align:top;
+                margin-left: 0;
+                margin-top: 0;
+                z-index: 10;
+            }
+            #screenbg{
+                position: absolute;
+                top:0px;
+                left:0px;
+                height: 3000px;
+                width: 3000px;
+                display: block;
+                vertical-align:top;
+                margin-left: 0;
+                margin-top: 10px;
+                border:0px solid #FFF;
+                display:block; 
+                z-index:0; 
+                margin:0;        
+            }
+            #interfacebg{
+                position: absolute;
+                top:0px;
+                left:0px;
+                height: 200px;
+                width: 800px;;
+                display: block;
+                vertical-align:top;
+                margin-left: -20px;
+                margin-top: -20px;
+                border:0px solid #FFF;
+                display:block; 
+                z-index:-1; 
+                background: url('images/toolbar.png');            
+            
+            }
+            #interfacebg img{
+              margin: 0;
+            }
+            #traxInfo{
+                position: absolute;
+                top:300px;
+                left:80px;
+                height: 300px;
+                width: 800px;;
+                display: block;
+                vertical-align:top;
+                margin-left: -20px;
+                margin-top: -20px;
+                border:0px solid #FFF;
+                display:none; 
+                z-index:10;   
+            }
+            
+            .trackInfoText{
+                font:53px/53px helvetica, Georgia, sans-serif; color:#FFF; font-weight: bold; cursor: pointer; text-transform: uppercase;                        
+            }
+            
+        </style>
+        <script type="text/javascript">
+            var globWidth = 0;
+            var globHeight = 0;
+            var played = new Array;
+            var traxList = new Array(); // regular array (add an optional integer
+            var traxInfo = new Array();
+            var currentTrax = 0;
+            var traxPlayed = 0;
+            var playerScore = 0;
+            var selected = Object;
+            var dir = 0;
+            var coverWidth = 200;
+            
+			function trax() {
+			  this.artist = '';
+			  this.trackName = ''
+			  this.album = '';
+			  this.website = '';
+			}
+			
+			           
+            
+		
+            /*if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
+                 if (document.cookie.indexOf("iphone_redirect=false") == -1) window.location = "mobile/index.html";
+            }*/
+
+            $(document).ready(function(){
+            });
+
+            $(window).load(function(){
+            
+                for (var x=0; x<=30; x++){
+                    traxList[x]=true;
+                }
+                initTraxInfo();
+                initScreen();
+                traxList[0]=false;
+                $('#play').click(function(){
+                    playAudio();
+                    $(this).blur();
+                });
+
+                $('#play').hover(function(){
+                    $('#play').animate({'opacity':'1.0'});
+                },function(){
+                    $('#play').animate({'opacity':'0.6'});
+                });
+                $('#logo').click(function(){
+                    document.location="http://www.sawebspace.co.za/electrogeek/";
+                });
+                setSize();
+                            
+                $(window).resize(function(){
+                    setSize();
+                });
+            });
+            
+            function initTraxInfo(){
+                    var mytrax = new trax();
+                    var x = 0;
+                    mytrax.artist='No Artist';
+                    mytrax.album='No Album';
+                    mytrax.trackName = 'No Name';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax; 
+                    var mytrax = new trax();
+                    var x = 1;
+                    mytrax.artist='Faithless';
+                    mytrax.album='The Dance';
+                    mytrax.trackName = 'Not Going Home';
+                    mytrax.website='http://www.faithless.co.uk'; 
+                    traxInfo[x]=mytrax; 
+                    var mytrax = new trax();
+                    var x = 2;
+                    mytrax.artist='Goldfrapp';
+                    mytrax.album='Black Cherry';
+                    mytrax.trackName = 'Crystalline Green';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax; 
+                    var mytrax = new trax();
+                    var x = 3;
+                    mytrax.artist='Caribou';
+                    mytrax.album='Swim';
+                    mytrax.trackName = 'Odessa';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax; 
+                    var mytrax = new trax();
+                    var x = 4;
+                    mytrax.artist='Aphex Twin';
+                    mytrax.album='Windowlicker';
+                    mytrax.trackName = 'Windowlicker';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax; 
+                    var mytrax = new trax();
+                    var x = 5;
+                    mytrax.artist='Armand Van Helden';
+                    mytrax.album='Nympho';
+                    mytrax.trackName = 'Into Your Eyes';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax; 
+                    var mytrax = new trax();
+                    var x = 6;
+                    mytrax.artist='Booka Shade';
+                    mytrax.album='Movements'
+                    mytrax.trackName = 'Body language (interpretation)';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax; 
+                    var mytrax = new trax(); 
+                    var x = 7;
+                    mytrax.artist='Scissor Sisters';
+                    mytrax.album='Scissor Sisters';
+                    mytrax.trackName = 'Comfortably Numb';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax;  
+                    var mytrax = new trax();
+                    var x = 8;
+                    mytrax.artist='Royksopp';
+                    mytrax.album='The Understanding';
+                    mytrax.trackName = 'What Else Is There';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax;  
+                    var mytrax = new trax();
+                    var x = 9;
+                    mytrax.artist='Primal Scream';
+                    mytrax.album='XTRMNTR';
+                    mytrax.trackName = 'Swastika Eyes';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax;  
+                    var mytrax = new trax();
+                    var x = 10;
+                    mytrax.artist='Digitalism';
+                    mytrax.album='Idealism';
+                    mytrax.trackName = 'Zdarlight';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax;  
+                    var mytrax = new trax();
+                    var x = 11;
+                    mytrax.artist='Mylo';
+                    mytrax.album='Destroy Rock & Roll';
+                    mytrax.trackName = 'In My Arms';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax;  
+                    var mytrax = new trax();
+                    var x = 12;
+                    mytrax.artist='The Knife';
+                    mytrax.album='Silent Shout';
+                    mytrax.trackName = 'Silent Shout';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax;  
+                    var mytrax = new trax();
+                    var x = 13;
+                    mytrax.artist='Justice';
+                    mytrax.album='Cross';
+                    mytrax.trackName = 'D.A.N.C.E.';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax;  
+                    var mytrax = new trax();
+                    var x = 14;
+                    mytrax.artist='Fischerspooner';
+                    mytrax.album='#1';
+                    mytrax.trackName = 'Emerge';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax;  
+                    var mytrax = new trax();
+                    var x = 15;
+                    mytrax.artist='Crystal Castles';
+                    mytrax.album='Crystal Castles'
+                    mytrax.trackName = 'Untrust Us';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax;  
+                    var mytrax = new trax();
+                    var x = 16;
+                    mytrax.artist='AIR';
+                    mytrax.album='10,000 Hz Legend';
+                    mytrax.trackName = 'Electronic Performers';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax;  
+                    var mytrax = new trax();
+                    var x = 17;
+                    mytrax.artist='Basement Jaxx';
+                    mytrax.album='Scars';
+                    mytrax.trackName = 'Scars';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax;  
+                    var mytrax = new trax();
+                    var x = 18;
+                    mytrax.artist='Hot Chip';
+                    mytrax.album='The Warning';
+                    mytrax.trackName = 'Careful';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax;  
+                    var mytrax = new trax();
+                    var x = 19;
+                    mytrax.artist='MGMT';
+                    mytrax.album='Oracular Spectacular';
+                    mytrax.trackName = 'Kids';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax;  
+                    var mytrax = new trax();
+                    var x = 20; 
+                    mytrax.artist='Tosca';
+                    mytrax.album='J.A.C.';
+                    mytrax.trackName = 'Rondo Acapricio';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax;   
+                    var mytrax = new trax();
+                    var x = 21; 
+                    mytrax.artist='Leftfield';
+                    mytrax.album='Rhythm And Stealth';
+                    mytrax.trackName = 'Afrika Shox';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax;   
+                    var mytrax = new trax();
+                    var x = 22; 
+                    mytrax.artist='Klaxons';
+                    mytrax.album='Myths of the near future';
+                    mytrax.trackName = 'Golden Skans';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax;   
+                    var mytrax = new trax();
+                    var x = 23; 
+                    mytrax.artist='The Presets';
+                    mytrax.album='Apocalypso';
+                    mytrax.trackName = 'Kicking And Screaming';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax;   
+                    var mytrax = new trax();
+                    var x = 24; 
+                    mytrax.artist='Underworld';
+                    mytrax.album='A Hundred Days Off';
+                    mytrax.trackName = 'Dinosaur Adventure 3D';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax;   
+                    var mytrax = new trax();
+                    var x = 25; 
+                    mytrax.artist='Tricky';
+                    mytrax.album='Pre-Millennium Tension';
+                    mytrax.trackName = 'Christiansands';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax;   
+                    var mytrax = new trax();
+                    var x = 26; 
+                    mytrax.artist='Swayzak';
+                    mytrax.album='Loops From The Bergerie'
+                    mytrax.trackName = 'Keep It Coming';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax;   
+                    var mytrax = new trax();
+                    var x = 27; 
+                    mytrax.artist='Daft Punk';
+                    mytrax.album='Homework';
+                    mytrax.trackName = 'Revolution 909';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax;   
+                    var mytrax = new trax();
+                    var x = 28; 
+                    mytrax.artist='Bjork';
+                    mytrax.album='Volta';
+                    mytrax.trackName = 'Earth Intruders';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax;   
+                    var mytrax = new trax();
+                    var x = 29; 
+                    mytrax.artist='Cut Copy';
+                    mytrax.album='Bright Like Neon Love';
+                    mytrax.trackName = 'Saturdays (Reprise)';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax;   
+                    var mytrax = new trax();
+                    var x = 30; 
+                    mytrax.artist='La Roux';
+                    mytrax.album='La Roux';
+                    mytrax.trackName = 'Bulletproof';
+                    mytrax.website='No Website'; 
+                    traxInfo[x]=mytrax;                                       
+            }
+
+
+            function drawCurtain(){
+                //$('#stageCurtain').animate({opacity:0.0}, 5000);
+                $('#stageCurtain').css('backgroundColor','transparent');
+                $('#stageCurtain_Left').animate({'marginLeft': '-2000px' }, 4000);
+                $('#stageCurtain_Right').animate({'marginLeft': '2000px' }, 4000);
+                setTimeout("$('#stageCurtain').hide()", 3000);
+                $('#logo').animate({'marginLeft':'-1000'},1000);
+                $('#intro').hide();       
+                $('#love').animate({'left':'520', 'top':'10'},1000).show();
+                $('#bomb').animate({'left':'620', 'top':'10'},1000).show(); 
+                $('#love input').animate({'opacity':'0.5','width':'64', 'height':'64','marginTop':'32','marginLeft':'32'},1000).show();
+                $('#bomb input').animate({'opacity':'0.5','width':'64', 'height':'64','marginTop':'32','marginLeft':'32'},1000).show();                                                                       
+                setTimeout("$('#play').click();",1000);
+            }
+
+            //function to get random number from 1 to n
+            function randomToN(maxVal,floatVal)
+            {
+                var randVal = Math.random()*maxVal;
+                return typeof floatVal=='undefined'?Math.round(randVal):randVal.toFixed(floatVal);
+            }
+
+            function setSize(){
+                if (parseInt(navigator.appVersion)>3) {
+                    if (navigator.appName=="Netscape") {
+                        winW = window.innerWidth;
+                        winH = window.innerHeight;
+                    }
+                    if (navigator.appName.indexOf("Microsoft")!=-1) {
+                        winW = document.body.offsetWidth;
+                        winH = document.body.offsetHeight;
+                    }
+                }
+                globWidth = winW;
+                globHeight = winH;
+                //$('#port').css('width',winW);
+                //$('#port').css('height',winH);
+                $('#wrapper').css('width',winW);
+                $('#wrapper').css('height',winH);
+                $('#screenbg').css('width',winW);
+                $('#screenbg').css('height',winH);
+                $('#stageCurtain').css('width',winW);
+                $('#stageCurtain').css('height',winH);
+                $('#stageCurtain_Left').css('width',winW / 2);
+                $('#stageCurtain_Left').css('height',winH);
+                $('#stageCurtain_Right').css('width',winW / 2);
+                $('#stageCurtain_Right').css('left',winW / 2);
+                $('#stageCurtain_Right').css('height',winH);
+                coverWidth = winW/8;
+                $('#wrapper img').animate({'width':coverWidth,'height':coverWidth}, 0);
+                setTimeout("$('#wrapper').masonry({ animate: false, columnWidth: coverWidth });",1000);
+            }
+
+            function generateCovers(){
+                if (dir == 0){
+                  $('#wrapper').css({'width':globWidth}); 
+                  $('#wrapper').masonry({ animate: true, columnWidth: coverWidth });
+                  dir = 1; 
+                } else {
+                  $('#wrapper').css({'width':globWidth}); 
+                  $('#wrapper').masonry({ animate: true, columnWidth: coverWidth });
+                  dir = 0;
+                }
+             }
+
+
+            function bindOptionEffects(){
+                $('#wrapper img').animate({'width':coverWidth,'height':coverWidth,'opacity':'0.3','zIndex':'1'}, 500);
+                $('#wrapper img').hover(function(){     
+                    //var chosen = $(this);
+                    //$('#wrapper img').not(chosen).animate({'opacity':'0.1'});                         
+                    $(this).animate({'width':'500','height':'500','opacity':'1.0','marginLeft':'-166','marginTop':'-160','zIndex':'2'}, 300);
+                    //$('#wrapper').masonry({ animate: false, columnWidth: 128 });
+
+                }, function(){
+                    //$('#wrapper img').animate({'opacity':'0.3'});
+                    $(this).stop().animate({'width':coverWidth,'height':coverWidth,'opacity':'0.3','marginLeft':'0','marginTop':'0','zIndex':'1'}, 0);
+                    $('#wrapper').masonry({ animate: false, columnWidth: coverWidth });
+                })     
+                $('#wrapper img').click(function(){
+                    showTraxInfo();
+                    tallyScore($(this).attr('alt'));
+                });                             
+                
+            }
+
+			function showTraxInfo(){
+			  $('body').append("<div id='traxInfo'><table width='100%'cellpadding='0' cellspacing='0' border='0'><tr><td width="+(coverWidth*2.0)+" valign='top'><img src='covers/"+currentTrax+".jpg' width="+(coverWidth*1.8)+" height="+(coverWidth*1.8)+"/></td><td valign='top'><p class='trackInfoText' style='float:left;'>"+traxInfo[currentTrax].artist+"<br/>"+traxInfo[currentTrax].album+"<br/>"+traxInfo[currentTrax].trackName+"</p></td></tr></table></div>");
+			  $('#traxInfo').show();
+			  setTimeout("$('#traxInfo').hide().remove();",3000);
+			}
+
+            function tallyScore(chosen){
+                generateCovers();                
+                if (chosen==currentTrax){
+                    playerScore++;
+                    strToDidgetsScore(playerScore.toString());
+	                $('#love input').animate({'opacity':'1.0','width':'128', 'height':'128','marginTop':'0','marginLeft':'0'},1000).show();
+	                $('#bomb input').animate({'opacity':'0.5','width':'64', 'height':'64','marginTop':'32','marginLeft':'32'},1000).show();    
+	                $("img[alt='"+chosen+"']").remove();      
+	                $('#wrapper').masonry({ animate: true, columnWidth: coverWidth });	       
+	                $('#love').show().animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200);   
+	                setTimeout("$('#play').click();",1000);                   
+                } else {
+	                $('#love input').stop().animate({'opacity':'0.6','width':'64', 'height':'64','marginTop':'32','marginLeft':'32'},1000).show();
+	                $('#bomb input').animate({'opacity':'1.0','width':'128', 'height':'128','marginTop':'0','marginLeft':'0'},1000).show();
+	                $('#bomb input').show().animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'}, 200);	
+	                setTimeout("$('#play').click();",5000);                 
+                }
+                $('#play').attr('src','images/toolbar/Next.png');
+            }
+
+            function playAudio(){
+                traxPlayed++;
+//                $('#love input').stop().animate({'opacity':'0.5','width':'64', 'height':'64'},0).show();
+//                $('#bomb input').stop().animate({'opacity':'0.5','width':'64', 'height':'64'},0).show();
+                var trac = randomToN(30,0.0);
+                var attempts = 0;
+                if (trac == 0){trac++;}
+                var canPlay = traxList[trac];
+                while (!canPlay){
+                    trac = randomToN(30,0.0);
+                    canPlay=traxList[trac];
+                    attempts++;
+                    if (attempts==31){
+                        endScreen()
+                        return 0;
+                    }
+                    traxList[trac]=false;
+                    currentTrax=trac;
+                }
+                traxList[trac]=false;
+                currentTrax=trac;
+                embedAudio(trac);
+                generateCovers();          
+                strToDidgets(asTime('00'));
+                $('#play').attr('src','images/toolbar/Pause.png');
+                var audio = document.querySelector('audio'),
+                togglePlay = document.querySelector('#play'),
+                position = document.querySelector('#position'),
+                ready = false,
+                controls = document.querySelector('#controls'),
+                fullscreen = null;
+
+
+
+                addEvent(audio, 'timeupdate', function () {
+                    strToDidgets(asTime(this.currentTime));
+                });
+
+
+
+                addEvent(audio, 'ended', function () {
+                    strToDidgets(asTime('00'));
+                    $('#play').attr('src','images/toolbar/Next.png');
+                });
+
+                debugToConsole();
+
+            }
+            function embedAudio(file){
+                $('#audioFilePlayer').html('<audio controls autobuffer autoplay style="position:absolute; left:0; top:0; margin-left:17px; margin-top:20px; z-index:65001;"><source src="audio/'+file+'.mp4" />  <source src="audio/'+file+'.ogg" /></audio>  ');
+            }
+
+
+            function asTime(t) {
+                t = Math.round(t);
+                var s = t % 60;
+                return  s;
+            }
+
+            function strToDidgets(s){
+                s += "";
+                if (s.length < 2) s = "0" + s;
+                switch(parseInt(s[0]))
+                {
+                    case 0:
+                        $('#tiene').attr('src', 'images/digits/0.png')
+                        break;
+                    case 1:
+                        $('#tiene').attr('src', 'images/digits/1.png')
+                        break;
+                    case 2:
+                        $('#tiene').attr('src', 'images/digits/2.png')
+                        break;
+                    case 3:
+                        $('#tiene').attr('src', 'images/digits/3.png')
+                        break;
+                    case 4:
+                        $('#tiene').attr('src', 'images/digits/4.png')
+                        break;
+                    case 5:
+                        $('#tiene').attr('src', 'images/digits/5.png')
+                        break;
+                    case 6:
+                        $('#tiene').attr('src', 'images/digits/6.png')
+                        break;
+                    case 7:
+                        $('#tiene').attr('src', 'images/digits/7.png')
+                        break;
+                    case 8:
+                        $('#tiene').attr('src', 'images/digits/8.png')
+                        break;
+                    case 9:
+                        $('#tiene').attr('src', 'images/digits/9.png')
+                        break;
+                    default:
+                        $('#tiene').attr('src', 'images/digits/b.png')
+                        break;
+                }
+
+                switch(parseInt(s[1]))
+                {
+                    case 0:
+                        $('#ene').attr('src', 'images/digits/0.png')
+                        break;
+                    case 1:
+                        $('#ene').attr('src', 'images/digits/1.png')
+                        break;
+                    case 2:
+                        $('#ene').attr('src', 'images/digits/2.png')
+                        break;
+                    case 3:
+                        $('#ene').attr('src', 'images/digits/3.png')
+                        break;
+                    case 4:
+                        $('#ene').attr('src', 'images/digits/4.png')
+                        break;
+                    case 5:
+                        $('#ene').attr('src', 'images/digits/5.png')
+                        break;
+                    case 6:
+                        $('#ene').attr('src', 'images/digits/6.png')
+                        break;
+                    case 7:
+                        $('#ene').attr('src', 'images/digits/7.png')
+                        break;
+                    case 8:
+                        $('#ene').attr('src', 'images/digits/8.png')
+                        break;
+                    case 9:
+                        $('#ene').attr('src', 'images/digits/9.png')
+                        break;
+                    default:
+                        $('#ene').attr('src', 'images/digits/0.png')
+                        break;
+                }
+
+            }
+
+            function strToDidgetsScore(s){
+                s += "";
+                if (s.length < 2) s = "0" + s;
+                switch(parseInt(s[0]))
+                {
+                    case 0:
+                        $('#scoretiene').attr('src', 'images/digits/0.png')
+                        break;
+                    case 1:
+                        $('#scoretiene').attr('src', 'images/digits/1.png')
+                        break;
+                    case 2:
+                        $('#scoretiene').attr('src', 'images/digits/2.png')
+                        break;
+                    case 3:
+                        $('#scoretiene').attr('src', 'images/digits/3.png')
+                        break;
+                    case 4:
+                        $('#scoretiene').attr('src', 'images/digits/4.png')
+                        break;
+                    case 5:
+                        $('#scoretiene').attr('src', 'images/digits/5.png')
+                        break;
+                    case 6:
+                        $('#scoretiene').attr('src', 'images/digits/6.png')
+                        break;
+                    case 7:
+                        $('#scoretiene').attr('src', 'images/digits/7.png')
+                        break;
+                    case 8:
+                        $('#scoretiene').attr('src', 'images/digits/8.png')
+                        break;
+                    case 9:
+                        $('#scoretiene').attr('src', 'images/digits/9.png')
+                        break;
+                    default:
+                        $('#scoretiene').attr('src', 'images/digits/0.png')
+                        break;
+                }
+
+                switch(parseInt(s[1]))
+                {
+                    case 0:
+                        $('#scoreene').attr('src', 'images/digits/0.png')
+                        break;
+                    case 1:
+                        $('#scoreene').attr('src', 'images/digits/1.png')
+                        break;
+                    case 2:
+                        $('#scoreene').attr('src', 'images/digits/2.png')
+                        break;
+                    case 3:
+                        $('#scoreene').attr('src', 'images/digits/3.png')
+                        break;
+                    case 4:
+                        $('#scoreene').attr('src', 'images/digits/4.png')
+                        break;
+                    case 5:
+                        $('#scoreene').attr('src', 'images/digits/5.png')
+                        break;
+                    case 6:
+                        $('#scoreene').attr('src', 'images/digits/6.png')
+                        break;
+                    case 7:
+                        $('#scoreene').attr('src', 'images/digits/7.png')
+                        break;
+                    case 8:
+                        $('#scoreene').attr('src', 'images/digits/8.png')
+                        break;
+                    case 9:
+                        $('#scoreene').attr('src', 'images/digits/9.png')
+                        break;
+                    default:
+                        $('#scoreene').attr('src', 'images/digits/0.png')
+                        break;
+                }
+
+            }
+
+
+            function initScreen(){
+                $('.parallax-layer').animate({'opacity':'0.9'});
+                $('#screenbg').animate({'opacity':'0.9'});
+                
+                $('#score').animate({'opacity':'0.9'});
+                $('#gameover').animate({'opacity':'0.9'});
+                $('#played').animate({'opacity':'0.9'});
+                $('#intro').animate({'opacity':'0.9'});
+                $('#intro').click(function(){
+                    $('#intro').animate({'opacity':'0.0'},1000);
+                    setTimeout('drawCurtain();',1000);
+                })
+                $('#tiene').animate({'opacity':'0.9'});
+                $('#ene').animate({'opacity':'0.9'});
+                $('#scoretiene').animate({'opacity':'0.9'});
+                $('#scoreene').animate({'opacity':'0.9'});
+                $('#play').animate({'opacity':'0.9'});
+                strToDidgetsScore(playerScore.toString());
+                $('#toolbar').animate({'top':'90', 'left':'340', 'top':'10'},1000).show();                 
+                $('#scorebox').show().animate({'left':'410'},600);
+                $('#score').show().animate({'left':'17'},600);                                 
+                bindOptionEffects(); 
+            }
+
+            function endScreen(){
+                $('#audioFilePlayer').html('');
+                $('#toolbar').hide();
+                $("#gameover").tweetIt({
+					animate: "slide",
+					header: "Tweet your ELECTROGEEK score!",	
+					intro: "We encourage you to post your score in your Twitter feed so that all your friends can have a try as well!",
+					popup: false
+				});   
+				$('#logo').show().animate({'marginLeft':'-40', 'marginTop':'0'},600);              
+                $('#gameover').show().animate({'marginLeft':'-50', 'marginTop':'300'},600);
+                $('#scorebox').stop().show().animate({'marginLeft':'0', 'marginTop':'150'},600);
+                $('#score').stop().show().animate({'marginTop':'150'},600);
+                $('#interfacebg').show().animate({'marginTop':'-450'},600);
+                $('#gameover').show().animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200).animate({'opacity':'0.6'},600).animate({'opacity':'1.0'},200);
+                $('#love').stop().animate({'opacity':'0.0'},1000).hide();
+                $('#bomb').stop().animate({'opacity':'0.0'},1000).hide();  
+               
+            }
+
+            function debugToConsole(){
+                //console.clear();
+                //console.log(traxList);
+                //console.log(traxPlayed);
+                //console.log(currentTrax);
+            }
+            
+		       
+			function setupMasonry(){
+						
+			
+			
+			}		            
+	 
+        </script>
+    </head>
+
+    <body>    
+  
+        <div id="stageCurtain">
+            <div id="stageCurtain_Left"></div>
+            <div id="stageCurtain_Right"></div>
+        </div>
+        <div id="audioFilePlayer"></div>
+        <!--<div id="port">
+            <img class="parallax-layer" src="images/RenderData.jpg" alt="" style="width:1680px; height:1050px;"/>            
+        </div>-->
+        
+        <div id="screenbg"></div>
+	
+			<div id="wrapper">
+			  <img src="covers/1.jpg" width="200" height="200" alt="1" class="option"/>
+			  <img src="covers/2.jpg" width="200" height="200" alt="2" class="option"/>
+			  <img src="covers/3.jpg" width="200" height="200" alt="3" class="option"/>
+			  <img src="covers/4.jpg" width="200" height="200" alt="4" class="option"/>
+			  <img src="covers/5.jpg" width="200" height="200" alt="5" class="option"/>
+			  <img src="covers/6.jpg" width="200" height="200" alt="6" class="option"/>
+			  <img src="covers/7.jpg" width="200" height="200" alt="7" class="option"/>
+			  <img src="covers/8.jpg" width="200" height="200" alt="8" class="option"/>
+			  <img src="covers/9.jpg" width="200" height="200" alt="9" class="option"/>
+			  <img src="covers/10.jpg" width="200" height="200" alt="10" class="option"/>
+			  <img src="covers/11.jpg" width="200" height="200" alt="11" class="option"/>
+			  <img src="covers/12.jpg" width="200" height="200" alt="12" class="option"/>
+			  <img src="covers/13.jpg" width="200" height="200" alt="13" class="option"/>
+			  <img src="covers/14.jpg" width="200" height="200" alt="14" class="option"/>
+			  <img src="covers/15.jpg" width="200" height="200" alt="15" class="option"/>
+			  <img src="covers/16.jpg" width="200" height="200" alt="16" class="option"/>
+			  <img src="covers/17.jpg" width="200" height="200" alt="17" class="option"/>
+			  <img src="covers/18.jpg" width="200" height="200" alt="18" class="option"/>
+			  <img src="covers/19.jpg" width="200" height="200" alt="19" class="option"/>
+			  <img src="covers/20.jpg" width="200" height="200" alt="20" class="option"/>
+			  <img src="covers/21.jpg" width="200" height="200" alt="21" class="option"/>
+			  <img src="covers/22.jpg" width="200" height="200" alt="22" class="option"/>
+			  <img src="covers/23.jpg" width="200" height="200" alt="23" class="option"/>
+			  <img src="covers/24.jpg" width="200" height="200" alt="24" class="option"/>
+			  <img src="covers/25.jpg" width="200" height="200" alt="25" class="option"/>
+			  <img src="covers/26.jpg" width="200" height="200" alt="26" class="option"/>
+			  <img src="covers/27.jpg" width="200" height="200" alt="27" class="option"/>
+			  <img src="covers/28.jpg" width="200" height="200" alt="28" class="option"/>
+			  <img src="covers/29.jpg" width="200" height="200" alt="29" class="option"/>
+			  <img src="covers/30.jpg" width="200" height="200" alt="30" class="option"/>
+			  <img src="covers/1.jpg" width="200" height="200" alt="1" class="option"/>
+			  <img src="covers/2.jpg" width="200" height="200" alt="2" class="option"/>
+			  <img src="covers/3.jpg" width="200" height="200" alt="3" class="option"/>
+			  <img src="covers/4.jpg" width="200" height="200" alt="4" class="option"/>
+			  <img src="covers/5.jpg" width="200" height="200" alt="5" class="option"/>
+			  <img src="covers/6.jpg" width="200" height="200" alt="6" class="option"/>
+			  <img src="covers/7.jpg" width="200" height="200" alt="7" class="option"/>
+			  <img src="covers/8.jpg" width="200" height="200" alt="8" class="option"/>
+			  <img src="covers/9.jpg" width="200" height="200" alt="9" class="option"/>
+			  <img src="covers/10.jpg" width="200" height="200" alt="10" class="option"/>
+			  <img src="covers/11.jpg" width="200" height="200" alt="11" class="option"/>
+			  <img src="covers/12.jpg" width="200" height="200" alt="12" class="option"/>
+			  <img src="covers/13.jpg" width="200" height="200" alt="13" class="option"/>
+			  <img src="covers/14.jpg" width="200" height="200" alt="14" class="option"/>
+			  <img src="covers/15.jpg" width="200" height="200" alt="15" class="option"/>
+			  <img src="covers/16.jpg" width="200" height="200" alt="16" class="option"/>
+			  <img src="covers/17.jpg" width="200" height="200" alt="17" class="option"/>
+			  <img src="covers/18.jpg" width="200" height="200" alt="18" class="option"/>
+			  <img src="covers/19.jpg" width="200" height="200" alt="19" class="option"/>
+			  <img src="covers/20.jpg" width="200" height="200" alt="20" class="option"/>
+			  <img src="covers/21.jpg" width="200" height="200" alt="21" class="option"/>
+			  <img src="covers/22.jpg" width="200" height="200" alt="22" class="option"/>
+			  <img src="covers/23.jpg" width="200" height="200" alt="23" class="option"/>
+			  <img src="covers/24.jpg" width="200" height="200" alt="24" class="option"/>
+			  <img src="covers/25.jpg" width="200" height="200" alt="25" class="option"/>
+			  <img src="covers/26.jpg" width="200" height="200" alt="26" class="option"/>
+			  <img src="covers/27.jpg" width="200" height="200" alt="27" class="option"/>
+			  <img src="covers/28.jpg" width="200" height="200" alt="28" class="option"/>
+			  <img src="covers/29.jpg" width="200" height="200" alt="29" class="option"/>
+			  <img src="covers/30.jpg" width="200" height="200" alt="30" class="option"/>
+			  <img src="covers/1.jpg" width="200" height="200" alt="1" class="option"/>
+			  <img src="covers/2.jpg" width="200" height="200" alt="2" class="option"/>
+			  <img src="covers/3.jpg" width="200" height="200" alt="3" class="option"/>
+			  <img src="covers/4.jpg" width="200" height="200" alt="4" class="option"/>
+			  <img src="covers/5.jpg" width="200" height="200" alt="5" class="option"/>
+			  <img src="covers/6.jpg" width="200" height="200" alt="6" class="option"/>
+			  <img src="covers/7.jpg" width="200" height="200" alt="7" class="option"/>
+			  <img src="covers/8.jpg" width="200" height="200" alt="8" class="option"/>
+			  <img src="covers/9.jpg" width="200" height="200" alt="9" class="option"/>
+			  <img src="covers/10.jpg" width="200" height="200" alt="10" class="option"/>
+			  <img src="covers/11.jpg" width="200" height="200" alt="11" class="option"/>
+			  <img src="covers/12.jpg" width="200" height="200" alt="12" class="option"/>
+			  <img src="covers/13.jpg" width="200" height="200" alt="13" class="option"/>
+			  <img src="covers/14.jpg" width="200" height="200" alt="14" class="option"/>
+			  <img src="covers/15.jpg" width="200" height="200" alt="15" class="option"/>
+			  <img src="covers/16.jpg" width="200" height="200" alt="16" class="option"/>
+			  <img src="covers/17.jpg" width="200" height="200" alt="17" class="option"/>
+			  <img src="covers/18.jpg" width="200" height="200" alt="18" class="option"/>
+			  <img src="covers/19.jpg" width="200" height="200" alt="19" class="option"/>
+			  <img src="covers/20.jpg" width="200" height="200" alt="20" class="option"/>
+			  <img src="covers/21.jpg" width="200" height="200" alt="21" class="option"/>
+			  <img src="covers/22.jpg" width="200" height="200" alt="22" class="option"/>
+			  <img src="covers/23.jpg" width="200" height="200" alt="23" class="option"/>
+			  <img src="covers/24.jpg" width="200" height="200" alt="24" class="option"/>
+			  <img src="covers/25.jpg" width="200" height="200" alt="25" class="option"/>
+			  <img src="covers/26.jpg" width="200" height="200" alt="26" class="option"/>
+			  <img src="covers/27.jpg" width="200" height="200" alt="27" class="option"/>
+			  <img src="covers/28.jpg" width="200" height="200" alt="28" class="option"/>
+			  <img src="covers/29.jpg" width="200" height="200" alt="29" class="option"/>
+			  <img src="covers/30.jpg" width="200" height="200" alt="30" class="option"/>	
+			  <img src="covers/1.jpg" width="200" height="200" alt="1" class="option"/>
+			  <img src="covers/2.jpg" width="200" height="200" alt="2" class="option"/>
+			  <img src="covers/3.jpg" width="200" height="200" alt="3" class="option"/>
+			  <img src="covers/4.jpg" width="200" height="200" alt="4" class="option"/>
+			  <img src="covers/5.jpg" width="200" height="200" alt="5" class="option"/>
+			  <img src="covers/6.jpg" width="200" height="200" alt="6" class="option"/>
+			  <img src="covers/7.jpg" width="200" height="200" alt="7" class="option"/>
+			  <img src="covers/8.jpg" width="200" height="200" alt="8" class="option"/>
+			  <img src="covers/9.jpg" width="200" height="200" alt="9" class="option"/>
+			  <img src="covers/10.jpg" width="200" height="200" alt="10" class="option"/>
+			  <img src="covers/11.jpg" width="200" height="200" alt="11" class="option"/>
+			  <img src="covers/12.jpg" width="200" height="200" alt="12" class="option"/>
+			  <img src="covers/13.jpg" width="200" height="200" alt="13" class="option"/>
+			  <img src="covers/14.jpg" width="200" height="200" alt="14" class="option"/>
+			  <img src="covers/15.jpg" width="200" height="200" alt="15" class="option"/>
+			  <img src="covers/16.jpg" width="200" height="200" alt="16" class="option"/>
+			  <img src="covers/17.jpg" width="200" height="200" alt="17" class="option"/>
+			  <img src="covers/18.jpg" width="200" height="200" alt="18" class="option"/>
+			  <img src="covers/19.jpg" width="200" height="200" alt="19" class="option"/>
+			  <img src="covers/20.jpg" width="200" height="200" alt="20" class="option"/>
+			  <img src="covers/21.jpg" width="200" height="200" alt="21" class="option"/>
+			  <img src="covers/22.jpg" width="200" height="200" alt="22" class="option"/>
+			  <img src="covers/23.jpg" width="200" height="200" alt="23" class="option"/>
+			  <img src="covers/24.jpg" width="200" height="200" alt="24" class="option"/>
+			  <img src="covers/25.jpg" width="200" height="200" alt="25" class="option"/>
+			  <img src="covers/26.jpg" width="200" height="200" alt="26" class="option"/>
+			  <img src="covers/27.jpg" width="200" height="200" alt="27" class="option"/>
+			  <img src="covers/28.jpg" width="200" height="200" alt="28" class="option"/>
+			  <img src="covers/29.jpg" width="200" height="200" alt="29" class="option"/>
+			  <img src="covers/30.jpg" width="200" height="200" alt="30" class="option"/>	
+			  <img src="covers/1.jpg" width="200" height="200" alt="1" class="option"/>
+			  <img src="covers/2.jpg" width="200" height="200" alt="2" class="option"/>
+			  <img src="covers/3.jpg" width="200" height="200" alt="3" class="option"/>
+			  <img src="covers/4.jpg" width="200" height="200" alt="4" class="option"/>
+			  <img src="covers/5.jpg" width="200" height="200" alt="5" class="option"/>
+			  <img src="covers/6.jpg" width="200" height="200" alt="6" class="option"/>
+			  <img src="covers/7.jpg" width="200" height="200" alt="7" class="option"/>
+			  <img src="covers/8.jpg" width="200" height="200" alt="8" class="option"/>
+			  <img src="covers/9.jpg" width="200" height="200" alt="9" class="option"/>
+			  <img src="covers/10.jpg" width="200" height="200" alt="10" class="option"/>
+			  <img src="covers/11.jpg" width="200" height="200" alt="11" class="option"/>
+			  <img src="covers/12.jpg" width="200" height="200" alt="12" class="option"/>
+			  <img src="covers/13.jpg" width="200" height="200" alt="13" class="option"/>
+			  <img src="covers/14.jpg" width="200" height="200" alt="14" class="option"/>
+			  <img src="covers/15.jpg" width="200" height="200" alt="15" class="option"/>
+			  <img src="covers/16.jpg" width="200" height="200" alt="16" class="option"/>
+			  <img src="covers/17.jpg" width="200" height="200" alt="17" class="option"/>
+			  <img src="covers/18.jpg" width="200" height="200" alt="18" class="option"/>
+			  <img src="covers/19.jpg" width="200" height="200" alt="19" class="option"/>
+			  <img src="covers/20.jpg" width="200" height="200" alt="20" class="option"/>
+			  <img src="covers/21.jpg" width="200" height="200" alt="21" class="option"/>
+			  <img src="covers/22.jpg" width="200" height="200" alt="22" class="option"/>
+			  <img src="covers/23.jpg" width="200" height="200" alt="23" class="option"/>
+			  <img src="covers/24.jpg" width="200" height="200" alt="24" class="option"/>
+			  <img src="covers/25.jpg" width="200" height="200" alt="25" class="option"/>
+			  <img src="covers/26.jpg" width="200" height="200" alt="26" class="option"/>
+			  <img src="covers/27.jpg" width="200" height="200" alt="27" class="option"/>
+			  <img src="covers/28.jpg" width="200" height="200" alt="28" class="option"/>
+			  <img src="covers/29.jpg" width="200" height="200" alt="29" class="option"/>
+			  <img src="covers/30.jpg" width="200" height="200" alt="30" class="option"/>	
+			  <img src="covers/1.jpg" width="200" height="200" alt="1" class="option"/>
+			  <img src="covers/2.jpg" width="200" height="200" alt="2" class="option"/>
+			  <img src="covers/3.jpg" width="200" height="200" alt="3" class="option"/>
+			  <img src="covers/4.jpg" width="200" height="200" alt="4" class="option"/>
+			  <img src="covers/5.jpg" width="200" height="200" alt="5" class="option"/>
+			  <img src="covers/6.jpg" width="200" height="200" alt="6" class="option"/>
+			  <img src="covers/7.jpg" width="200" height="200" alt="7" class="option"/>
+			  <img src="covers/8.jpg" width="200" height="200" alt="8" class="option"/>
+			  <img src="covers/9.jpg" width="200" height="200" alt="9" class="option"/>
+			  <img src="covers/10.jpg" width="200" height="200" alt="10" class="option"/>
+			  <img src="covers/11.jpg" width="200" height="200" alt="11" class="option"/>
+			  <img src="covers/12.jpg" width="200" height="200" alt="12" class="option"/>
+			  <img src="covers/13.jpg" width="200" height="200" alt="13" class="option"/>
+			  <img src="covers/14.jpg" width="200" height="200" alt="14" class="option"/>
+			  <img src="covers/15.jpg" width="200" height="200" alt="15" class="option"/>
+			  <img src="covers/16.jpg" width="200" height="200" alt="16" class="option"/>
+			  <img src="covers/17.jpg" width="200" height="200" alt="17" class="option"/>
+			  <img src="covers/18.jpg" width="200" height="200" alt="18" class="option"/>
+			  <img src="covers/19.jpg" width="200" height="200" alt="19" class="option"/>
+			  <img src="covers/20.jpg" width="200" height="200" alt="20" class="option"/>
+			  <img src="covers/21.jpg" width="200" height="200" alt="21" class="option"/>
+			  <img src="covers/22.jpg" width="200" height="200" alt="22" class="option"/>
+			  <img src="covers/23.jpg" width="200" height="200" alt="23" class="option"/>
+			  <img src="covers/24.jpg" width="200" height="200" alt="24" class="option"/>
+			  <img src="covers/25.jpg" width="200" height="200" alt="25" class="option"/>
+			  <img src="covers/26.jpg" width="200" height="200" alt="26" class="option"/>
+			  <img src="covers/27.jpg" width="200" height="200" alt="27" class="option"/>
+			  <img src="covers/28.jpg" width="200" height="200" alt="28" class="option"/>
+			  <img src="covers/29.jpg" width="200" height="200" alt="29" class="option"/>
+			  <img src="covers/30.jpg" width="200" height="200" alt="30" class="option"/>	
+			  <img src="covers/1.jpg" width="200" height="200" alt="1" class="option"/>
+			  <img src="covers/2.jpg" width="200" height="200" alt="2" class="option"/>
+			  <img src="covers/3.jpg" width="200" height="200" alt="3" class="option"/>
+			  <img src="covers/4.jpg" width="200" height="200" alt="4" class="option"/>
+			  <img src="covers/5.jpg" width="200" height="200" alt="5" class="option"/>
+			  <img src="covers/6.jpg" width="200" height="200" alt="6" class="option"/>
+			  <img src="covers/7.jpg" width="200" height="200" alt="7" class="option"/>
+			  <img src="covers/8.jpg" width="200" height="200" alt="8" class="option"/>
+			  <img src="covers/9.jpg" width="200" height="200" alt="9" class="option"/>
+			  <img src="covers/10.jpg" width="200" height="200" alt="10" class="option"/>
+			  <img src="covers/11.jpg" width="200" height="200" alt="11" class="option"/>
+			  <img src="covers/12.jpg" width="200" height="200" alt="12" class="option"/>
+			  <img src="covers/13.jpg" width="200" height="200" alt="13" class="option"/>
+			  <img src="covers/14.jpg" width="200" height="200" alt="14" class="option"/>
+			  <img src="covers/15.jpg" width="200" height="200" alt="15" class="option"/>
+			  <img src="covers/16.jpg" width="200" height="200" alt="16" class="option"/>
+			  <img src="covers/17.jpg" width="200" height="200" alt="17" class="option"/>
+			  <img src="covers/18.jpg" width="200" height="200" alt="18" class="option"/>
+			  <img src="covers/19.jpg" width="200" height="200" alt="19" class="option"/>
+			  <img src="covers/20.jpg" width="200" height="200" alt="20" class="option"/>
+			  <img src="covers/21.jpg" width="200" height="200" alt="21" class="option"/>
+			  <img src="covers/22.jpg" width="200" height="200" alt="22" class="option"/>
+			  <img src="covers/23.jpg" width="200" height="200" alt="23" class="option"/>
+			  <img src="covers/24.jpg" width="200" height="200" alt="24" class="option"/>
+			  <img src="covers/25.jpg" width="200" height="200" alt="25" class="option"/>
+			  <img src="covers/26.jpg" width="200" height="200" alt="26" class="option"/>
+			  <img src="covers/27.jpg" width="200" height="200" alt="27" class="option"/>
+			  <img src="covers/28.jpg" width="200" height="200" alt="28" class="option"/>
+			  <img src="covers/29.jpg" width="200" height="200" alt="29" class="option"/>
+			  <img src="covers/30.jpg" width="200" height="200" alt="30" class="option"/>	
+			  <img src="covers/1.jpg" width="200" height="200" alt="1" class="option"/>
+			  <img src="covers/2.jpg" width="200" height="200" alt="2" class="option"/>
+			  <img src="covers/3.jpg" width="200" height="200" alt="3" class="option"/>
+			  <img src="covers/4.jpg" width="200" height="200" alt="4" class="option"/>
+			  <img src="covers/5.jpg" width="200" height="200" alt="5" class="option"/>
+			  <img src="covers/6.jpg" width="200" height="200" alt="6" class="option"/>
+			  <img src="covers/7.jpg" width="200" height="200" alt="7" class="option"/>
+			  <img src="covers/8.jpg" width="200" height="200" alt="8" class="option"/>
+			  <img src="covers/9.jpg" width="200" height="200" alt="9" class="option"/>
+			  <img src="covers/10.jpg" width="200" height="200" alt="10" class="option"/>
+			  <img src="covers/11.jpg" width="200" height="200" alt="11" class="option"/>
+			  <img src="covers/12.jpg" width="200" height="200" alt="12" class="option"/>
+			  <img src="covers/13.jpg" width="200" height="200" alt="13" class="option"/>
+			  <img src="covers/14.jpg" width="200" height="200" alt="14" class="option"/>
+			  <img src="covers/15.jpg" width="200" height="200" alt="15" class="option"/>
+			  <img src="covers/16.jpg" width="200" height="200" alt="16" class="option"/>
+			  <img src="covers/17.jpg" width="200" height="200" alt="17" class="option"/>
+			  <img src="covers/18.jpg" width="200" height="200" alt="18" class="option"/>
+			  <img src="covers/19.jpg" width="200" height="200" alt="19" class="option"/>
+			  <img src="covers/20.jpg" width="200" height="200" alt="20" class="option"/>
+			  <img src="covers/21.jpg" width="200" height="200" alt="21" class="option"/>
+			  <img src="covers/22.jpg" width="200" height="200" alt="22" class="option"/>
+			  <img src="covers/23.jpg" width="200" height="200" alt="23" class="option"/>
+			  <img src="covers/24.jpg" width="200" height="200" alt="24" class="option"/>
+			  <img src="covers/25.jpg" width="200" height="200" alt="25" class="option"/>
+			  <img src="covers/26.jpg" width="200" height="200" alt="26" class="option"/>
+			  <img src="covers/27.jpg" width="200" height="200" alt="27" class="option"/>
+			  <img src="covers/28.jpg" width="200" height="200" alt="28" class="option"/>
+			  <img src="covers/29.jpg" width="200" height="200" alt="29" class="option"/>
+			  <img src="covers/30.jpg" width="200" height="200" alt="30" class="option"/>	
+			  <img src="covers/1.jpg" width="200" height="200" alt="1" class="option"/>
+			  <img src="covers/2.jpg" width="200" height="200" alt="2" class="option"/>
+			  <img src="covers/3.jpg" width="200" height="200" alt="3" class="option"/>
+			  <img src="covers/4.jpg" width="200" height="200" alt="4" class="option"/>
+			  <img src="covers/5.jpg" width="200" height="200" alt="5" class="option"/>
+			  <img src="covers/6.jpg" width="200" height="200" alt="6" class="option"/>
+			  <img src="covers/7.jpg" width="200" height="200" alt="7" class="option"/>
+			  <img src="covers/8.jpg" width="200" height="200" alt="8" class="option"/>
+			  <img src="covers/9.jpg" width="200" height="200" alt="9" class="option"/>
+			  <img src="covers/10.jpg" width="200" height="200" alt="10" class="option"/>
+			  <img src="covers/11.jpg" width="200" height="200" alt="11" class="option"/>
+			  <img src="covers/12.jpg" width="200" height="200" alt="12" class="option"/>
+			  <img src="covers/13.jpg" width="200" height="200" alt="13" class="option"/>
+			  <img src="covers/14.jpg" width="200" height="200" alt="14" class="option"/>
+			  <img src="covers/15.jpg" width="200" height="200" alt="15" class="option"/>
+			  <img src="covers/16.jpg" width="200" height="200" alt="16" class="option"/>
+			  <img src="covers/17.jpg" width="200" height="200" alt="17" class="option"/>
+			  <img src="covers/18.jpg" width="200" height="200" alt="18" class="option"/>
+			  <img src="covers/19.jpg" width="200" height="200" alt="19" class="option"/>
+			  <img src="covers/20.jpg" width="200" height="200" alt="20" class="option"/>
+			  <img src="covers/21.jpg" width="200" height="200" alt="21" class="option"/>
+			  <img src="covers/22.jpg" width="200" height="200" alt="22" class="option"/>
+			  <img src="covers/23.jpg" width="200" height="200" alt="23" class="option"/>
+			  <img src="covers/24.jpg" width="200" height="200" alt="24" class="option"/>
+			  <img src="covers/25.jpg" width="200" height="200" alt="25" class="option"/>
+			  <img src="covers/26.jpg" width="200" height="200" alt="26" class="option"/>
+			  <img src="covers/27.jpg" width="200" height="200" alt="27" class="option"/>
+			  <img src="covers/28.jpg" width="200" height="200" alt="28" class="option"/>
+			  <img src="covers/29.jpg" width="200" height="200" alt="29" class="option"/>
+			  <img src="covers/30.jpg" width="200" height="200" alt="30" class="option"/>	
+			  <img src="covers/1.jpg" width="200" height="200" alt="1" class="option"/>
+			  <img src="covers/2.jpg" width="200" height="200" alt="2" class="option"/>
+			  <img src="covers/3.jpg" width="200" height="200" alt="3" class="option"/>
+			  <img src="covers/4.jpg" width="200" height="200" alt="4" class="option"/>
+			  <img src="covers/5.jpg" width="200" height="200" alt="5" class="option"/>
+			  <img src="covers/6.jpg" width="200" height="200" alt="6" class="option"/>
+			  <img src="covers/7.jpg" width="200" height="200" alt="7" class="option"/>
+			  <img src="covers/8.jpg" width="200" height="200" alt="8" class="option"/>
+			  <img src="covers/9.jpg" width="200" height="200" alt="9" class="option"/>
+			  <img src="covers/10.jpg" width="200" height="200" alt="10" class="option"/>
+			  <img src="covers/11.jpg" width="200" height="200" alt="11" class="option"/>
+			  <img src="covers/12.jpg" width="200" height="200" alt="12" class="option"/>
+			  <img src="covers/13.jpg" width="200" height="200" alt="13" class="option"/>
+			  <img src="covers/14.jpg" width="200" height="200" alt="14" class="option"/>
+			  <img src="covers/15.jpg" width="200" height="200" alt="15" class="option"/>
+			  <img src="covers/16.jpg" width="200" height="200" alt="16" class="option"/>
+			  <img src="covers/17.jpg" width="200" height="200" alt="17" class="option"/>
+			  <img src="covers/18.jpg" width="200" height="200" alt="18" class="option"/>
+			  <img src="covers/19.jpg" width="200" height="200" alt="19" class="option"/>
+			  <img src="covers/20.jpg" width="200" height="200" alt="20" class="option"/>
+			  <img src="covers/21.jpg" width="200" height="200" alt="21" class="option"/>
+			  <img src="covers/22.jpg" width="200" height="200" alt="22" class="option"/>
+			  <img src="covers/23.jpg" width="200" height="200" alt="23" class="option"/>
+			  <img src="covers/24.jpg" width="200" height="200" alt="24" class="option"/>
+			  <img src="covers/25.jpg" width="200" height="200" alt="25" class="option"/>
+			  <img src="covers/26.jpg" width="200" height="200" alt="26" class="option"/>
+			  <img src="covers/27.jpg" width="200" height="200" alt="27" class="option"/>
+			  <img src="covers/28.jpg" width="200" height="200" alt="28" class="option"/>
+			  <img src="covers/29.jpg" width="200" height="200" alt="29" class="option"/>
+			  <img src="covers/30.jpg" width="200" height="200" alt="30" class="option"/>	
+			  <img src="covers/1.jpg" width="200" height="200" alt="1" class="option"/>
+			  <img src="covers/2.jpg" width="200" height="200" alt="2" class="option"/>
+			  <img src="covers/3.jpg" width="200" height="200" alt="3" class="option"/>
+			  <img src="covers/4.jpg" width="200" height="200" alt="4" class="option"/>
+			  <img src="covers/5.jpg" width="200" height="200" alt="5" class="option"/>
+			  <img src="covers/6.jpg" width="200" height="200" alt="6" class="option"/>
+			  <img src="covers/7.jpg" width="200" height="200" alt="7" class="option"/>
+			  <img src="covers/8.jpg" width="200" height="200" alt="8" class="option"/>
+			  <img src="covers/9.jpg" width="200" height="200" alt="9" class="option"/>
+			  <img src="covers/10.jpg" width="200" height="200" alt="10" class="option"/>
+			  <img src="covers/11.jpg" width="200" height="200" alt="11" class="option"/>
+			  <img src="covers/12.jpg" width="200" height="200" alt="12" class="option"/>
+			  <img src="covers/13.jpg" width="200" height="200" alt="13" class="option"/>
+			  <img src="covers/14.jpg" width="200" height="200" alt="14" class="option"/>
+			  <img src="covers/15.jpg" width="200" height="200" alt="15" class="option"/>
+			  <img src="covers/16.jpg" width="200" height="200" alt="16" class="option"/>
+			  <img src="covers/17.jpg" width="200" height="200" alt="17" class="option"/>
+			  <img src="covers/18.jpg" width="200" height="200" alt="18" class="option"/>
+			  <img src="covers/19.jpg" width="200" height="200" alt="19" class="option"/>
+			  <img src="covers/20.jpg" width="200" height="200" alt="20" class="option"/>
+			  <img src="covers/21.jpg" width="200" height="200" alt="21" class="option"/>
+			  <img src="covers/22.jpg" width="200" height="200" alt="22" class="option"/>
+			  <img src="covers/23.jpg" width="200" height="200" alt="23" class="option"/>
+			  <img src="covers/24.jpg" width="200" height="200" alt="24" class="option"/>
+			  <img src="covers/25.jpg" width="200" height="200" alt="25" class="option"/>
+			  <img src="covers/26.jpg" width="200" height="200" alt="26" class="option"/>
+			  <img src="covers/27.jpg" width="200" height="200" alt="27" class="option"/>
+			  <img src="covers/28.jpg" width="200" height="200" alt="28" class="option"/>
+			  <img src="covers/29.jpg" width="200" height="200" alt="29" class="option"/>
+			  <img src="covers/30.jpg" width="200" height="200" alt="30" class="option"/>	
+		  		
+			</div>
+		
+		      
+
+        <div id="logo"></div>
+        <div id="intro"></div>
+        <div id="love"><input type="image" id="lovebtn" value="" src="images/love.png"/></div>
+        <div id="bomb"><input type="image" id="bombbtn" value="" src="images/bomb.png"/></div>
+
+        <div id="gameover"></div>
+        <div id="score"></div>
+        <div id="scorebox">
+            <input type="image" id="scoretiene" value="scoretiene" src="images/digits/0.png" style=" margin-right:5px;"/>
+            <input type="image" id="scoreene" value="scoreene" src="images/digits/0.png" style=" margin-right:5px;"/>
+        </div>
+        <div id="toolbar">
+            <p id="controls">
+                <input type="image" id="play" value="play" src="images/toolbar/Play.png" style="height:53px;margin-right:15px;border:none;"/>
+                <input type="image" id="tiene" value="tiene" src="images/digits/0.png" style="margin-right:5px;"/>
+                <input type="image" id="ene" value="ene" src="images/digits/0.png" style="margin-right:5px;"/>
+            </p>
+        </div>
+        <div id="interfacebg"></div>
+        <script type="text/javascript" src="script/jquery.jparallax.min.js"></script>
+        <script type="text/javascript">
+
+            jQuery(document).ready(function(){
+                setSize();
+                // Declare parallax on layers
+                jQuery('.parallax-layer').parallax({
+                    mouseport: jQuery("body")
+                });
+
+            });
+        </script>
+        <!--<script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+        <script type="text/javascript">
+            try {
+                var pageTracker = _gat._getTracker("UA-6601573-1");
+                pageTracker._trackPageview();
+            } catch(err) {}
+
+        </script> -->       
+    </body>
+</html>
