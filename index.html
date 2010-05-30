@@ -25,7 +25,7 @@
             h4 {font:24px/24px helvetica, Georgia, sans-serif; color:#FFF; font-weight: bold; cursor: pointer; text-transform: uppercase;}
             h5 {font:30px/30px helvetica, Georgia, sans-serif; color:#FFF; font-weight: bold; cursor: pointer; text-transform: uppercase;}
             .h3{font:14px/28px helvetica, Georgia, sans-serif; color:#FFF;}
-            body {font-family: helvetica, Georgia, sans-serif; font-size: 12px; width:100%; color:#FFF;font:12px/18px helvetica, Georgia,sans-serif;   background:url('images/pinstripe.gif'); }
+            body {font-family: helvetica, Georgia, sans-serif; font-size: 12px; width:100%; color:#FFF;font:12px/18px helvetica, Georgia,sans-serif;   background:#000 }
             p{color:#FFF;}
             a {text-decoration: underline; cursor:pointer;}
             a img {border: none; cursor:pointer;}
@@ -134,7 +134,7 @@
                 margin-top: -20px;
                 border:0px solid #FFF;
                 display:block; 
-                z-index:-1; 
+                z-index:0; 
                 background: url('images/toolbar.png');            
             
             }
@@ -157,7 +157,7 @@
             }
             
             .trackInfoText{
-                font:53px/53px helvetica, Georgia, sans-serif; color:#FFF; font-weight: bold; cursor: pointer; text-transform: uppercase;                        
+                font:27px/27px helvetica, Georgia, sans-serif; color:#FFF; font-weight: bold; cursor: pointer; text-transform: uppercase;                        
             }
             
         </style>
@@ -488,7 +488,7 @@
                 $('#stageCurtain_Right').css('width',winW / 2);
                 $('#stageCurtain_Right').css('left',winW / 2);
                 $('#stageCurtain_Right').css('height',winH);
-                coverWidth = winW/8;
+                coverWidth = winW/10;
                 $('#wrapper img').animate({'width':coverWidth,'height':coverWidth}, 0);
                 setTimeout("$('#wrapper').masonry({ animate: false, columnWidth: coverWidth });",1000);
             }
@@ -529,7 +529,8 @@
 			function showTraxInfo(){
 			  $('body').append("<div id='traxInfo'><table cellpadding='0' cellspacing='0' border='0'><tr><td width="+(coverWidth*1.8)+" valign='top'><img src='covers/"+currentTrax+".jpg' width="+(coverWidth*1.8)+" height="+(coverWidth*1.8)+"/></td><td>&nbsp;&nbsp;</td><td valign='top' width='600'><p class='trackInfoText' style='float:left;'>"+traxInfo[currentTrax].artist+"<br/>"+traxInfo[currentTrax].album+"<br/>"+traxInfo[currentTrax].trackName+"<br/><a href="+traxInfo[currentTrax].website+" style='color:#FFF; text-decoration:none;' target='_blank'>"+traxInfo[currentTrax].website+"</a></p></td></tr></table></div>");
 			  $('#traxInfo').show();
-			  setTimeout("$('#traxInfo').hide().remove();",3000);
+			  setTimeout("$('#traxInfo').animate({'opacity':'0.6'},1600)",7000);
+			  setTimeout("$('#traxInfo').remove()",8600);
 			}
 
             function tallyScore(chosen){
