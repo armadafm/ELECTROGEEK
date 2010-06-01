@@ -34,7 +34,7 @@
             a.menuItem{font:30px/30px helvetica, Georgia, sans-serif; color:#FFF; font-weight: bold; cursor: pointer; text-decoration: none; margin-bottom: 20px;}
             #logo{position: absolute; top:50px; left:60px; width:600px; height:128px; background:url('images/logo.png') no-repeat; z-index:65000;}
             #gameover{position: absolute; top:40px; left:88px; width:1050px; height:128px; background:url('images/gameover.png') no-repeat; z-index:65000; display: none; cursor:pointer;}
-            #score{position: absolute; top:50px; left:700px; width:300px; height:100px; background:url('images/score.png') no-repeat; z-index:10; margin-left: 0;
+            #score{position: absolute; top:50px; left:700px; width:425px; height:128px; background:url('images/score.png') no-repeat; z-index:10; margin-left: 0;
                 margin-top: 0;}
             #stageCurtain{position:absolute; top:0px; left:0px; display:block;   z-index:20; overflow: hidden; width: 10000px; height: 2000px;}
             #stageCurtain_Left{position:absolute; top:0px; left:0px; display:block; z-index:21; background:url('images/pinstripe.gif'); margin-left: 0px;}
@@ -100,7 +100,7 @@
             #scorebox{
                 position: absolute;
                 top:90px;
-                left:320px;
+                left:340px;
                 height: 53px;
                 width: 128px;
                 display: block;
@@ -795,8 +795,8 @@
                 $('#scoreene').animate({'opacity':'0.9'});
                 $('#play').animate({'opacity':'0.9'});
                 strToDidgetsScore(playerScore.toString());
-                $('#toolbar').animate({'top':'90', 'left':'340', 'top':'10'},1000).show();                 
-                $('#scorebox').show().animate({'left':'410'},600);
+                $('#toolbar').animate({'top':'90', 'left':'360', 'top':'10'},1000).show();                 
+                $('#scorebox').show().animate({'left':'430'},600);
                 $('#score').show().animate({'left':'17'},600);                                 
                 bindOptionEffects(); 
 				$('#tweet input').animate({'width':'64', 'height':'64','marginTop':'32','marginLeft':'32'},1000).show();
